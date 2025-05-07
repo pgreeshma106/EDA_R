@@ -1,0 +1,80 @@
+---
+title: "BIS581"
+output: html_notebook
+---
+The following uses the diamonds dataset from the GGPLOT2 library
+AUTHOR: GREESHMA CHOWDARY PEDDINENI 
+DATE: 01/19/2025
+
+```{r}
+library(ggplot2)
+mydiamonds <- diamonds
+```
+
+
+How many records are in the dataset?
+```{r}
+nrow(mydiamonds)
+```
+
+What is the largest diamond by weight (carat)?
+```{r}
+max(mydiamonds$carat)
+```
+
+Most and least expensive?
+```{r}
+
+max(mydiamonds$price)
+
+min(mydiamonds$price)
+```
+ 
+Plot a bar chart of count of diamonds vs cut.
+```{r}
+barplot(table(diamonds$cut), main = "Count of Diamonds by Cut", xlab = "Cut", ylab = "Count", col = "Green")
+```
+
+Let's explore the data a bit. What attributes does the most expensive diamond have? Change max(price) to min(price) to see the least expensive.
+```{r}
+subset(diamonds, price == max(price))
+```
+
+Create a plot of carat vs price.
+```{r}
+plot(mydiamonds$carat, mydiamonds$price)
+```
+
+
+Does it look like carat and price have a linear relationship?
+
+Answer:
+The carat and price plot doesn't look like a linear relationship. Because 
+we cannot split the data into half. But it looks like exponential, we can 
+make it into half. 
+
+
+Create three other plots of other variables vs price. The point of exploratory analysis (know your data) is to do just that, explore. You might have to plot more than three to find variables that plot correctly. Please realize too that scatter plots (or line) are for continuous variables and not for categorical variables. See the ggplot2 intro for references. Please try to pick three variables that you think have a strong influence in the price of the diamond. The main point for this is to make a model later on.
+
+```{r}
+plot(mydiamonds$depth, mydiamonds$price)
+
+plot(mydiamonds$color, mydiamonds$price)
+
+plot(mydiamonds$table, mydiamonds$price)
+
+barplot(table(diamonds$color), main = "color vs price", xlab = "Color", ylab = "price", col = "Orange")
+
+barplot(table(diamonds$clarity), main = "Clarity vs price", xlab = "Clarity", ylab = "price", col = "Green")
+
+barplot(table(diamonds$depth), main = "depth vs price", xlab = "depth", ylab = "price", col = "Blue")
+```
+
+
+By the bar charts we can conclude that which one is highest and lowest. But 
+from plots we cannot able to find anything because the variables are 
+categorical. From my analysis we can say that bar charts shows exact 
+information that what we want.I kept both plots here to compare that which 
+one's are better.
+
+
